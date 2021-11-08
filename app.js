@@ -10,4 +10,4 @@ app.use('/api/v1/user',userRouter)
 app.use('/api/v1/movie',movieRouter)
 
 
-module.exports =app
+module.exports =  app

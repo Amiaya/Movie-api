@@ -4,7 +4,7 @@
   "description": "Top movies",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 20000"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,10 @@
     "mongoose": "^6.0.12",
     "nodemon": "^2.0.14",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.1.3"
   }
 }

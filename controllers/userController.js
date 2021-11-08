@@ -3,14 +3,14 @@ const Movie = require('./../models/movieModels')
 exports.createUser = async(req, res) => {
     try{
         const NewUser  = new User(req.body)
-        res.status(200).json({
+        res.status(201).json({
             status: "success",
             data: {
                 User: NewUser
             }
         })
     }catch(err){
-        res.status(400).json({
+        res.status(404).json({
             status: "fail",
             message: err
         })
@@ -27,7 +27,7 @@ exports.GetAllUser = async(req,res) => {
             }
         })
     }catch(err){
-        res.status(400).json({
+        res.status(404).json({
             status: "fail",
             message: err
         })
@@ -36,18 +36,17 @@ exports.GetAllUser = async(req,res) => {
 
 
 exports.UpdateUser = async(req,res)=> {
-    
     try{
-        const user = await User.findById(req.params.id)
+        const user = await User.findByIdAndUpdate(req.params.id, req.body)
         res.status(200).json({
             status: "success",
             data: {
                 User: user
             }
         })
-        
+        console.log(req.body)
     }catch(err){
-        res.status(400).json({
+        res.status(404).json({
             status: "fail",
             message: err
         })
@@ -67,7 +66,7 @@ exports.GetUser = async(req,res) =>{
             }
         })
     }catch(err){
-        res.status(400).json({
+        res.status(404).json({
             status: "fail",
             message: err
         })
@@ -83,7 +82,7 @@ exports.DeleteUser = async (req,res) => {
 
 
     }catch(err){
-        res.status(400).json({
+        res.status(404).json({
             status: "fail",
             message: err
         })
