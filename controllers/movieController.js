@@ -15,12 +15,31 @@ exports.createMovies = async(req, res) => {
             rating_average: result.data.items[i].vote_average,
             overview: result.data.items[i].overview
         })
+        await newMovie.save()
         res.status(200).json({
             status: "sucess",
             data: {
                 movie: newMovie
             }
         })
+    }catch(err){
+        res.status(400).json({
+          status: "fail",
+            message: err  
+        })
+    }
+}
+
+exports.GetAllMovies = async (req,res) => {
+    try{
+        var movies =  await Movie.find()
+        res.status(200).json({
+            status: "sucess",
+            data: {
+                movies
+            }
+        })
+
     }catch(err){
         res.status(400).json({
           status: "fail",

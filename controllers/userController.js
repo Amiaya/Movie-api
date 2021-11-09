@@ -3,6 +3,7 @@ const Movie = require('./../models/movieModels')
 exports.createUser = async(req, res) => {
     try{
         const NewUser  = new User(req.body)
+        await NewUser.save()
         res.status(201).json({
             status: "success",
             data: {
@@ -55,9 +56,10 @@ exports.UpdateUser = async(req,res)=> {
 
 exports.GetUser = async(req,res) =>{
     try{
-        const user = await User.findById(req.params.id)
-        const movie = await Movie.findOne({})
+        const user = await User.findById(req.params.id).populate('topMovies')
+        const movie = await Movie.find({})
         user.topMovies.push(movie)
+        await user.save()
     
         res.status(200).json({
             status: "success",
