@@ -1,5 +1,5 @@
-const userController = require('./../controllers/userController')
-const express = require('express')
+const {controllers: userController} = require('../controllers/userController')
+import express from 'express'
 
 const router = express.Router()
 router.route('/').post(userController.createUser).get(userController.GetAllUser)

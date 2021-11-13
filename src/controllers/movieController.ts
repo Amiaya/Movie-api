@@ -1,6 +1,6 @@
-const axios = require('axios')
-const Movie = require('./../models/movieModels')
-const User = require('./../models/userModels')
+const { default: axios } = require('axios')
+const {models: Movies} = require('../models/movieModels')
+// const User = require('../models/userModels')
 
 exports.createMovies = async(req, res) => {
     try{
@@ -9,7 +9,7 @@ exports.createMovies = async(req, res) => {
         if (i > result.data.items.length){
             return "Error i greater than length of movie"
         }
-        const newMovie = new Movie({
+        const newMovie = new Movies({
             Name: result.data.items[i].original_title,
             release_date: result.data.items[i].release_date,
             rating_average: result.data.items[i].vote_average,
@@ -32,7 +32,7 @@ exports.createMovies = async(req, res) => {
 
 exports.GetAllMovies = async (req,res) => {
     try{
-        var movies =  await Movie.find()
+        var movies =  await Movies.find()
         res.status(200).json({
             status: "sucess",
             data: {

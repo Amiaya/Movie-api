@@ -1,6 +1,5 @@
-const mongoose = require('mongoose')
-
-const movieSchema = new mongoose.Schema({
+var mongoose = require('mongoose');
+var movieSchema = new mongoose.Schema({
     Name: {
         type: String,
         required: true
@@ -20,7 +19,6 @@ const movieSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-})
-
-const Movie = mongoose.model('Movie', movieSchema)
-module.exports = Movie
+});
+var Movie = mongoose.model('Movie', movieSchema);
+module.exports = Movie;

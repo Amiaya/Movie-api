@@ -1,5 +1,6 @@
-const User = require('./../models/userModels')
-const Movie = require('./../models/movieModels')
+const {models: User} = require('../models/userModels')
+const {models: Movie} = require('../models/movieModels')
+
 exports.createUser = async(req, res) => {
     try{
         const NewUser  = new User(req.body)

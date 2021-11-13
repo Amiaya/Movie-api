@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
+import mongoose from 'mongoose'
+import dotenv  from 'dotenv'
 
 dotenv.config({path: './config.env'})
-const app = require('./app')
+const {data: app} = require('./app')
 
 const DB = process.env.DATABASE
 
@@ -14,4 +14,4 @@ const port = 4000
 const server = app.listen(port, ()=> {
     console.log(`Listening to port ${port}`)
 })
-module.exports = server
+export = server
